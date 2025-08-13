@@ -28,7 +28,7 @@ console.log(typeof naam); // string
 console.log(typeof null); // object
 console.log(typeof undefined); // undefined
 
-// number => 2 to power 53
+// number => 2 to power 53 rabge
 // bigint
 // string => ""
 // boolean => true/false
