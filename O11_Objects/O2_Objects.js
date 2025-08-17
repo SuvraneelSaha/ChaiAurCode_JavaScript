@@ -58,3 +58,38 @@ console.log(Object.entries(tinderUser));
 // [ [ 'id', '123abc' ], [ 'name', 'Sammy' ], [ 'isLoggedIn', false ] ]
 
 // console.log(tinderUser.hasOwnProperty('isLoggedIn'));
+
+// Object destructuring 
+
+const course = {
+    coursename: "js in hindi",
+    price: "999",
+    courseInstructor: "hitesh"
+}
+
+// course.courseInstructor
+
+const {courseInstructor: instructor} = course
+// this is destructuring 
+
+// console.log(courseInstructor);
+console.log(instructor);
+
+// previously responses came from api in xml form 
+// now comes in jSon form 
+
+// {
+//     "name": "hitesh",
+//     "coursename": "js in hindi",
+//     "price": "free"
+// }
+// this is object 
+
+[
+    {},
+    {},
+    {}
+]
+// this is array of Objects 
+// Practically there can be a very big array of objects in that case we need to use JSon Formatter 
+// to understand the structure of the Array of Objects 
