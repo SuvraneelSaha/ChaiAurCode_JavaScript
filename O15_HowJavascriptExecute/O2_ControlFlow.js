@@ -10,6 +10,7 @@ const temperature = 41;
 
 // console.log("Execute");
 // <, >, <=, >=, ==, !=, ===, !==
+// === checks not only value but also the type of the data 
 
 // const score = 200
 
@@ -24,7 +25,7 @@ const temperature = 41;
 // const balance = 1000
 
 // if (balance > 500) console.log("test"),console.log("test2");
-// this is implicit scope
+// this is implicit scope not a good practice 
 
 // if (balance < 500) {
 //     console.log("less than 500");
