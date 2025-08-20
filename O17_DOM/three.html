@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chai aur code </title>
+</head>
+<body style="background-color: #212121; color: #fff;">
+    
+</body>
+<script>
+    const div = document.createElement('div')
+    console.log(div);
+    // it is an empty div element 
+    div.className = "main"
+    div.id = Math.round(Math.random() * 10 + 1)
+    div.setAttribute("title", "generated title")
+    // directly sets - so for which it decreases the no. of operations 
+    div.style.backgroundColor = "green"
+    div.style.padding = "12px"
+    // upto this point this div is in the memory not inside of the html document ie not in page 
+
+    // div.innerText = "Chai aur code"
+    // selects first then overwrites so for which it takes 2 operations 
+    // to complete 
+    const addText = document.createTextNode("Chai aur code") 
+    div.appendChild(addText)
+    // div.innerText and this way by div.appendChild both are 
+    // same but have some performance issues 
+
+    document.body.appendChild(div)
+    // attaching to the body 
+</script>
+</html>
