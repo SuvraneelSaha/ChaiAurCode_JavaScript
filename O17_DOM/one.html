@@ -1,17 +1,172 @@
 <!DOCTYPE html>
 <!-- this file is a type of document  -->
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>DOM Learning </title>
-</head>
-<body>
-  
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DOM Learning</title>
+    <style>
+      .bg-black {
+        background-color: #212121;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body class="bg-black">
+    <div>
+      <h1 id="title" class="heading">
+        DOM learning on Chai aur code
+        <span style="display: none">test text</span>
+      </h1>
+      <h2>Lorem ipsum dolor sit.</h2>
+      <h2>Lorem ipsum dolor sit.</h2>
+      <h2>Lorem ipsum dolor sit.</h2>
+      <p>Lorem ipsum dolor sit amet.</p>
+      <input type="password" name="" id="" />
+
+      <ul>
+        <li class="list-item">one</li>
+        <li class="list-item">two</li>
+        <li class="list-item">three</li>
+        <li class="list-item">four</li>
+      </ul>
+    </div>
+  </body>
 </html>
 <!-- DOM - document Object Model -->
- <!-- console.log(document) - do it inside of a browser  -->
-  <!-- console.dir(document) for all the values -->
-   <!-- basically DOM is a tree starting from the window - to document - html - head , body childs 
+<!-- console.log(document) - do it inside of a browser  -->
+<!-- console.dir(document) for all the values -->
+<!-- basically DOM is a tree starting from the window - to document - html - head , body childs 
      -->
+
+<!-- 
+const title = document.getElementById("title");
+title.style.backgroundColor = "green";
+as title is a object we can use the methods using the . operator 
+suggestions will come from the browser console      
+
+
+title.textContent 
+title.innerHTML
+title.innerText
+
+
+innerText > does not displays the whole text , if the text is hidden by the css -- example - span 
+textContent > display all the text 
+innerHTML > gives the whole html -- supports all the html tags 
+
+
+document.getElementsByClassName("heading")
+
+document.querySelector("h2") -- gives the first element of it 
+
+document.querySelector("#title")
+
+document.querySelector(".heading")
+
+document.querySelector("input[type="password"]")
+input tag will get selected 
+
+document.querySelector("p:first-child")
+
+all depends on the css selector 
+
+const myUL = document.querySelector("ul")
+
+const turnGreen = myUL.querySelector("li") - returns the first li 
+
+turnGreen.style.backgroundColor = "green";
+
+turnGreen.style.padding = "10px"
+
+turnGreen.innerText = " five " -- it will be changed to five 
+
+const tempLiList = document.querySelectorAll("li")
+-- gives out Nodelist which is not an Array 
+
+check its properties and prototype - values which are available check 
+
+map available in array by default 
+
+tempLiList.style.color = " green "; 
+// wont happen 
+
+tempLiList[0].style.color = " green "; 
+// now it will run 
+
+const myHi = document.querySelectorAll("h1");
+-- its a nodeList 
+again so if we try 
+myHi.style.color = "green"; 
+this wont work 
+myHi[0].style.color="green"
+this will work 
+
+tempLiList.forEach(function (l) {
+l.style.backgroundColor = "green"})
+
+nodelist has forEach in its property 
+
+if we want to use map then we need to convert the nodelist into array 
+then only we can use the map function 
+
+const tempClassList = document.getElementsByClassName("list-item")
+returns a HTMLCollection 
+
+tempClassList.forEach(function (li){
+console.log(li)
+}) 
+
+forEach is not a func here 
+
+convert htmlCollection 
+
+const myConvertedArray = Array.from(tempClassList)
+now it has got all the methods 
+
+myConvertedArray.forEach(function(li){
+li.style.colo="orange"})
+
+With methods like map, filter, or reduce, the callback is expected to return a value.
+But in forEach, since nothing is collected, return is ignored.
+No return needed because you’re using forEach.
+
+If you switch to map or filter, you’ll use return.
+
+myConvertedArray.forEach(li => {
+  li.style.color = "orange";
+});
+This changes the style of each element.
+
+Does not return a new array (always returns undefined).
+
+const updatedArray = myConvertedArray.map(li => {
+  li.style.color = "orange";  // side effect
+  return li;                  // must return something!
+});
+
+console.log(updatedArray === myConvertedArray); // true (same elements)
+We must use return because map creates a new array.
+
+If you return li, then updatedArray will contain the same elements (but styled orange).
+
+If you return something else (like just the text), the new array will contain that instead.
+
+From Wikipedia - example - 
+const allH2 = document.querySelectorAll("h2")
+
+allH2[0].innerText -- gives the 0th index values 
+
+const myH2 = document.querySelectorAll(".mw-headline");
+myH2[0].innerText 
+
+myH2.forEach(function (h) {
+h.style.color="red";
+h.style.backgroundColor="green";
+h.style.padding = "10px";
+h.innerText = "Hitesh Sir"
+})
+
+
+
+-->
