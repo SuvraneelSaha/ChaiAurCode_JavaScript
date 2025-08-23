@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Chai aur code</h1>
+    <button id="stop">Stop</button>
+  </body>
+  <script>
+    // windows - object has aall the methods of the browser
+    // handler means a method which got no name
+    setTimeout(function () {
+      console.log("Hiesh");
+    }, 2000);
+    // runs only once
+
+    // another way
+    const sayHi = function () {
+      console.log("HI Hitesh");
+    };
+
+    setTimeout(sayHi, 2000);
+    // sayHi is the handler -- we are passing the function as a reference
+    // not as a function call
+
+    // another example -
+    const changeText = function () {
+      document.querySelector("h1").innerHTML = "best JS series";
+    };
+    const changeMe = setTimeout(changeText, 2000);
+    // 2000ms means 2 seconds
+
+    document.querySelector("#stop").addEventListener("click", function () {
+      clearTimeout(changeMe);
+      // we need to give reference on which timeout we need to stop 
+      console.log("STOPPED");
+    });
+  </script>
+</html>
