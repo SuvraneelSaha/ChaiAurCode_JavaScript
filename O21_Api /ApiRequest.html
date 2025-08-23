@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body style="background-color: #212121; color: #fff">
+    <p>
+      0 UNSENT Client has been created. open() not called yet. 1 OPENED open()
+      has been called. 2 HEADERS_RECEIVED send() has been called, and headers
+      and status are available. 3 LOADING Downloading; responseText holds
+      partial data. 4 DONE The operation is complete.
+    </p>
+    <div
+      class="card"
+      style="
+        width: 300px;
+        margin: 20px auto;
+        padding: 20px;
+        border: 1px solid #ddd;
+        border-radius: 12px;
+        background: #fff;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+        text-align: center;
+      "
+    >
+      <h2
+        id="userName"
+        style="font-size: 20px; margin-bottom: 15px; color: #333"
+      >
+        Name -
+      </h2>
+
+      <ul class="uList" style="list-style: none; padding: 0; margin: 0">
+        <li style="margin-bottom: 12px">
+          <img
+            src=""
+            alt="Profile"
+            id="profilePic"
+            style="
+              width: 100px;
+              height: 100px;
+              border-radius: 50%;
+              object-fit: cover;
+              border: 2px solid #ccc;
+            "
+          />
+        </li>
+        <li
+          id="followersCount"
+          style="margin-bottom: 8px; font-size: 16px; color: #555"
+        >
+          No of Followers is -
+        </li>
+        <li id="repositoriesCount" style="font-size: 16px; color: #555">
+          No of repositories -
+        </li>
+      </ul>
+    </div>
+  </body>
+  <script>
+    const requestUrl = "https://api.github.com/users/hiteshchoudhary";
+    const xhr = new XMLHttpRequest();
+    xhr.open("GET", requestUrl);
+    // console.log("here working");
+    // console.log(xhr.readyState);
+    xhr.onreadystatechange = function () {
+      console.log(xhr.readyState);
+      if (xhr.readyState === 4) {
+        const data = JSON.parse(this.responseText);
+        // this means the current context here
+        // JSON.parse is the method which converts the string into an Json object
+        console.log(typeof data);
+        // response in most cases comes in the form of strings
+        // so we need to convert it to json format
+        // otherwise we wont get the values
+        console.log(data.followers);
+        console.log(data.avatar_url);
+
+        // Selecting elements
+        const userName = document.querySelector("#userName");
+        const profilePic = document.querySelector("#profilePic");
+        const followersCount = document.querySelector("#followersCount");
+        const repositoriesCount = document.querySelector("#repositoriesCount");
+
+        // Now attaching the datas
+        userName.innerHTML += `${data.name}`;
+        profilePic.src = data.avatar_url;
+        followersCount.innerHTML += `${data.followers}`;
+        repositoriesCount.innerHTML += `${data.public_repos}`;
+      }
+    };
+
+    xhr.send();
+  </script>
+</html>
