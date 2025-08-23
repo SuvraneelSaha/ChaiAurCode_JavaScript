@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>htnml Events </title>
+</head>
+<body style="background-color: #414141; color: aliceblue;">
+    <h2>Amazing image</h2>
+    <div >
+        <ul id="images">
+            <li><img width="200px" id="photoshop" src="https://images.pexels.com/photos/3561339/pexels-photo-3561339.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="photoshop"></li>
+            <li><img width="200px" id="japan" src="https://images.pexels.com/photos/3532553/pexels-photo-3532553.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="river" src="https://images.pexels.com/photos/3532551/pexels-photo-3532551.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><img width="200px" id="owl" src="https://images.pexels.com/photos/3532552/pexels-photo-3532552.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt="" ></li>
+            <!-- onlclick ="alert("owl")"
+             not a good approach  -->
+            <li><img width="200px" id="prayer" src="https://images.pexels.com/photos/2522671/pexels-photo-2522671.jpeg?auto=compress&cs=tinysrgb&w=1600&lazy=load" alt=""></li>
+            <li><a style="color: aliceblue;" href="https://google.com" id="google">Google</a></li>
+        </ul>
+   </div>
+</body>
+<script>
+  //  js - does execution of events in a sequentially manner majorly 
+
+ // document.getElementById('owl').onclick = function(){
+    //     alert("owl clicked")
+    // }
+// this is the old way 
+   // attachEvent()
+    // jQuery - on()
+    // this is also an old way 
+
+
+// from events we get both browser and environment events 
+
+// important Events 
+ // type - keyboard and mouse keys , timestamp, defaultPrevented - change/stop the default function 
+    // target, toElement, srcElement , currentTarget,
+    // clientX, clientY, screenX, screenY - positional related 
+    // altkey, ctrlkey, shiftkey, keyCode
+
+  // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // }, false)
+
+    // Event Propagation 
+    // event bubbling - false ;  -- choto theke boro bubble 
+    // first image -- then li -- then ul -- like this 
+    // event capturing - true 
+    // from top to bottom 
+    // first ul - then li - then image 
+
+
+    // Now we want to separate things out 
+
+     // document.getElementById('images').addEventListener('click', function(e){
+    //     console.log("clicked inside the ul");
+    // e.stopPropation();
+    // this wont make the event travel from one element to another 
+    // it will restrict to its own element only 
+    // }, false)
+
+// prevent default method 
+// document.getElementById('google').addEventListener('click',function(e){
+    //     e.preventDefault();
+    //     e.stopPropagation() -- to stop bubbling up 
+    //     console.log("google clicked");
+    // }, false)
+
+     document.querySelector('#images').addEventListener('click', function(e){
+        console.log(e.target.tagName);
+        console.log(e.target.parentNode);
+        // the subsequent parentNode that is present will be selected 
+
+        if (e.target.tagName === 'IMG') {
+            console.log(e.target.id);
+            let removeIt = e.target.parentNode
+            removeIt.remove()
+            //  //removeIt.parentNode.removeChild(removeIt)
+            // we can use also this 
+            // here parentNode = ul 
+            // removeChild(removeIt) - means it is li 
+            // this phenomenon - this particular deleting problem 
+            // is know as event spillover 
+        }
+    
+        
+    })
+</script>
+</html>
