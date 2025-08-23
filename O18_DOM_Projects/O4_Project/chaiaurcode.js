@@ -22,6 +22,7 @@ let playGame = true;
 if (playGame) {
   submit.addEventListener("click", function (e) {
     e.preventDefault();
+    // otherwise it will reload 
     const guess = parseInt(userInput.value);
     console.log(guess);
     validateGuess(guess);
