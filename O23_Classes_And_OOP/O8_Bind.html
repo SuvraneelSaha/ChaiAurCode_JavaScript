@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>React</title>
+  </head>
+  <body>
+    <button>Button Clicked</button>
+  </body>
+  <script>
+    class React {
+      constructor() {
+        this.library = "React";
+        this.server = "https://localhost:3000";
+
+        //requirement
+        // 1 . whenever the page is loaded the the object is created of the react class
+        // 2 . we get button's reference and handleClick method -- after clicking log
+
+        document
+          .querySelector("button")
+          .addEventListener("click", this.handleClick.bind(this));
+          // this kaha sein aa raha hein -- jisne call kiya tha 
+          // we have the button reference here - coming from this keyword 
+      }
+      handleClick() {
+        // button er reference aasche 
+        console.log("Button Clicked");
+        console.log(this.server);
+      }
+    }
+
+    const app = new React();
+  </script>
+</html>
+
+<!-- this is how react used to work previously  -->
