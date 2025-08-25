@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure aur chai</title>
+  </head>
+  <body style="background-color: #313131">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+
+  <script>
+    // function init() {
+    //   let name = "Mozilla";
+    //   function displayName() {
+    //     console.log(name);
+    //   }
+    //   displayName();
+    // }
+    // init();
+
+    // copied from Mozilla MDN
+
+    function outerExample() {
+      let username = "Meow";
+    }
+    //  console.log(username);
+    // O1_Closure.html:66 Uncaught ReferenceError: username is not defined
+
+    function outer() {
+      let username = "hitesh";
+      console.log("OUTER", secret);
+      // this wont be accessible to the parent function 
+      function inner() {
+         let secret = "my123"
+        console.log("inner", username);
+      }
+      function innerTwo() {
+        console.log("innerTwo", username);
+        console.log(secret);
+        // this also wont be accessible to this function 
+      }
+      inner();
+      innerTwo();
+    }
+    outer();
+    console.log("TOO OUTER", username);
+
+    // we know at the bottom of the call stack -
+    // there is an global execution context
+    // then on top of it there is another function call - so
+    // it will have its own function execution context
+    // and then if any other function is executed from the scope of its parent function
+    // then in that case , it will share its variables and memory with that of its parent
+    // execution context -- ie the inner child function can access its parents' properties and
+    // variables
+    // So this phenomenon is known as lexical scoping
+
+
+    // 
+  </script>
+</html>
