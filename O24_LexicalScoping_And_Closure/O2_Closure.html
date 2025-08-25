@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Closure aur chai</title>
+  </head>
+  <body style="background-color: #313131">
+    <button id="orange">Orange</button>
+    <button id="green">Green</button>
+  </body>
+
+  <script>
+    document.getElementById("orange").onclick = function () {
+      document.body.style.backgroundColor = `orange`;
+    };
+    document.getElementById("green").onclick = function () {
+      document.body.style.backgroundColor = `green`;
+    };
+
+    // now the challenge is that we will be given 500 color buttons and
+    // we need to change the color of the buttons upon clicking
+
+    function clickHandler(color) {
+      // document.body.style.backgroundColor = `${color}`;
+
+      return function meow() {
+        document.body.style.backgroundColor = `${color}`;
+        // if we did not knew that lexical scoping works then we wont be able to
+        // pass the function like this
+      };
+    }
+    document.getElementById("orange").onclick = clickHandler("orange");
+    // onClick needs a function - ;
+    // function reference given means we are providing function definition
+    // not executing
+    // onClick needs Executable function
+    document.getElementById("green").onclick = clickHandler("green");
+  </script>
+</html>

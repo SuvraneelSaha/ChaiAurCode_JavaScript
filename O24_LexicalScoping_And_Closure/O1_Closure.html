@@ -28,24 +28,24 @@
     //  console.log(username);
     // O1_Closure.html:66 Uncaught ReferenceError: username is not defined
 
-    function outer() {
-      let username = "hitesh";
-      console.log("OUTER", secret);
-      // this wont be accessible to the parent function 
-      function inner() {
-         let secret = "my123"
-        console.log("inner", username);
-      }
-      function innerTwo() {
-        console.log("innerTwo", username);
-        console.log(secret);
-        // this also wont be accessible to this function 
-      }
-      inner();
-      innerTwo();
-    }
-    outer();
-    console.log("TOO OUTER", username);
+    // function outer() {
+    //   let username = "hitesh";
+    //   console.log("OUTER", secret);
+    //   // this wont be accessible to the parent function
+    //   function inner() {
+    //     let secret = "my123";
+    //     console.log("inner", username);
+    //   }
+    //   function innerTwo() {
+    //     console.log("innerTwo", username);
+    //     console.log(secret);
+    //     // this also wont be accessible to this function
+    //   }
+    //   inner();
+    //   innerTwo();
+    // }
+    // outer();
+    // console.log("TOO OUTER", username);
 
     // we know at the bottom of the call stack -
     // there is an global execution context
@@ -57,7 +57,22 @@
     // variables
     // So this phenomenon is known as lexical scoping
 
+    // Closure
 
-    // 
+    function makeFunc() {
+      const name = "Mozilla";
+      function displayName() {
+        console.log(name);
+      }
+      return displayName;
+    }
+
+    const myFunc = makeFunc();
+    // the whole lexical scope is being sent as reference to the call stack
+    // function's scope stays until and unless it is executed
+    // executed means its scope is gone
+    // but although the functional execution context is removed as it is executed from the call stack
+    // the memory reference carries the whole lexical scope gets returned
+    myFunc();
   </script>
 </html>
